@@ -1,4 +1,10 @@
 VultureWeb::Application.configure do
+
+  ENV['S3_KEY']='AKIAIVWRVY4GUS32OVEA'
+  ENV['S3_SECRET']='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'
+  ENV['S3_BUCKET']='vulture.assets'
+  ENV['S3-REGION']='ap-southeast-1'
+  
   # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests
