@@ -1,5 +1,3 @@
-Refinery.s3_backend = true
-
 VultureWeb::Application.configure do
 
   ENV['S3_KEY']='AKIAIVWRVY4GUS32OVEA'
