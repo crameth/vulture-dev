@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<%= render '/refinery/html_tag' %>
+<% site_bar = render('/refinery/site_bar', :head => true) -%>
+<%= render '/refinery/head' %>
+<body>
+	<%= site_bar -%>
+	<%= render '/refinery/ie6check' if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
+	<div id="page_container">
+		<header id="header">
+			<%= render '/refinery/header' -%>
+		</header>
+		<section id="page">
+			<div class="container_24">
+				<% @page.children.each do |boss| %>
+				<% boss.images.each_with_index	 do |image, index| %>
+				<div class = "grid_8" style="position:relative;">
+					<a href="<%= url_for boss.url %>"><img src="<%=image.thumbnail("400x400#c").url%>" data-title="Item Title"></a>
+					<div class='nivo-caption' style="width: 310px; height: 40px; top: 270px; padding: 0; left: 0px; ">  
+						<h1 style="padding:2px 5px 2px 5px; font-size:17px;"><%=raw boss.title.split(' ')[0,4].inject{|sum,word| sum + ' ' + word}%> 
+							<% if boss.title.split(' ').count>5 %>
+							<%= "..."%>
+							<% end %>
+						</h1>
+					</div> 
+				</div>
+				<% break %>
+				<% end %>
+				<% end %>
+			</div>
+		</section>
+		<footer>
+			<%= render '/refinery/footer' -%>
+		</footer>
+	</div>
+	<%= render '/refinery/javascripts' %>
+</body>
+</html>
+
+

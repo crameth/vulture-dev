@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<%= render '/refinery/html_tag' %>
+<% site_bar = render('/refinery/site_bar', :head => true) -%>
+<%= render '/refinery/head' %>
+<link href='http://fonts.googleapis.com/css?family=PT+Serif+Caption' rel='stylesheet' type='text/css' />
+<body>
+  <%= site_bar -%>
+  <%= render '/refinery/ie6check' if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
+
+  <section id="page">
+    <div class="container_24">
+      <div class="grid_8 push_8 suffix_8">
+          <%= link_to image_tag("vulture-logo.jpg", width:"100%"), "/home"%>
+      </div>
+
+      <div class="grid_20 push_2 suffix_2">
+       <div style="text-align:center;position:relative;padding-bottom:60.25%;padding-top:25px;height:0px;">
+		 <iframe src="http://www.gucciconnect.com/embed/" style="width: 750px; height: 420px;" marginheight="0" marginwidth="0" frameborder="0" scrolling="no"></iframe> 
+        </div>
+      </div>
+
+    </div>
+    <br />
+    <div class="row">
+      <div class="five columns"></div>
+      <div class="two columns" style="text-align:center;">
+        <p style="text-align:center; font-family:'treb';"><%= link_to "- ENTER -", "/home"%></p>
+      </div>
+      <div class="five columns"></div>
+ </section>
+ <%= render '/refinery/javascripts' %>
+</body>
+</html>

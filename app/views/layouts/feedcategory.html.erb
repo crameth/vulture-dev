@@ -1,0 +1,29 @@
+<% headers['Content-Type'] = 'application/rss+xml' %>
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+ <channel>
+ <atom:link href="https://vulture.herokuapp.com<%= url_for @page.url %>" rel="self" type="application/rss+xml" />
+ <title>Vulture Magazine</title>
+ <link>https://vulture.herokuapp.com<%= url_for @page.url %></link>
+ <description><%= @page.parent.title %></description>
+ 
+ <% @page.parent.children.live.sort_by(&:created_at).reverse.each do |boss| %>
+ <% boss.images.each_with_index do |image, index| %>
+
+ <item>
+  <title><%= boss.title %></title>
+  <link>http://www.vulture-magazine.com<%= url_for boss.url %></link>
+  <pubDate><%= boss.created_at.to_s(:rfc822) %></pubDate>
+  <guid>http://www.vulture-magazine.com<%= url_for boss.url %></guid>
+  <description>
+	&lt;img src='http://www.vulture-magazine.com<%=image.thumbnail("800x450#c").url%>' alt='<%=@page.caption_for_image_index(index) %>' /&gt;
+	<%= boss.content_for(:body).to_s.gsub('src="/system', 'src="http://www.vulture-magazine.com/system') %>
+  </description>
+ </item>
+ 
+ <% break %>	
+ <% end %>
+ <% end %>
+ 
+ </channel>
+</rss>

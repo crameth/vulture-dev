@@ -1,0 +1,298 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require foundation
+ *= require 960
+ *= require_self
+ *= require_tree ./themes
+ *= require_tree ./front
+ */
+
+@font-face {
+    font-family: pala;
+    src: url("/fonts/pala.ttf");
+}
+
+@font-face{
+    font-family: treb;
+    src: url("/fonts/museo.otf")
+}
+
+h1{
+    font-family: 'treb', sans-serif;
+    color: #2a2a2a;
+}
+
+h1.small{
+    font-variant: small-caps;
+    font-size: 22px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+h2, h3{
+    color: #2a2a2a;
+    font-family: 'treb',sans-serif;
+}
+ 
+ div.description{  
+     position:absolute; /* absolute position (so we can position it where we want)*/  
+     bottom:0px; /* position will be on bottom */  
+     left:0px;  
+     width: 100%;
+     top: 0px;
+     height: 100%;
+     /* styling bellow */  
+     background-color:black;  
+     font-family: 'pala',sans-serif;  
+     font-size:15px;  
+     color:white;  
+     opacity:0.0; /* transparency */  
+     filter:alpha(opacity=0); /* IE transparency */  
+     text-align: center;
+     cursor: pointer;
+     transition: opacity .25s ease-in-out;
+        -moz-transition: opacity .25s ease-in-out;
+        -webkit-transition: opacity .25s ease-in-out;
+        -o-transition: opacity .25s ease-in-out;
+ }  
+
+ .description p{
+    width: 80%;
+    height: 10%;
+    margin: 100% auto;
+    text-align: center;
+ }
+
+.description p a{
+    border-top: 1px;
+    border-bottom: 1px;
+    border-style: solid;
+    border-color: white;
+    padding-top:6px; 
+    padding-bottom: 6px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+  div.description:hover{
+  	opacity:0.7;
+  }
+
+ .descriptiontext:hover{
+    color: #1a1a1a;
+ }
+
+ div.postdescription{  
+     position:absolute; /* absolute position (so we can position it where we want)*/  
+     bottom:0px; /* position will be on bottom */  
+     right:0px;  
+     width:30%;
+     height:100%;  
+     /* styling bellow */  
+     background-color:black;  
+     font-family: 'tahoma';  
+     font-size:15px;  
+     color:white;  
+     opacity:0.8; /* transparency */  
+     filter:alpha(opacity=0.8); /* IE transparency */  
+     text-align: center;
+     padding:0px;
+     margin: 0px;
+     border: none;
+     overflow: hidden;  
+     transition: opacity .25s ease-in-out;
+        -moz-transition: opacity .25s ease-in-out;
+        -webkit-transition: opacity .25s ease-in-out;
+        -o-transition: opacity .25s ease-in-out;
+
+ }  
+
+ .postdescriptiontext{
+    position: absolute;
+    top: 20%;
+    margin-left: 10%;
+    font-family: 'pala',sans-serif;
+    color: #7c7c7c;
+
+ }
+
+ .postdescriptiontext:hover{
+    color: #1a1a1a;
+
+ }
+
+ p {
+    font-family: 'pala',serif;
+    text-align: justify;
+    font-size: 14px;
+    color: black;
+    line-height: 17px;
+ }
+
+ p.mus{
+    font-family: 'treb', sans-serif;
+ }
+
+
+ .menuitem{
+    font-family: 'treb',sans-serif;
+    color: #2a2a2a;
+    width: 615px;  
+    text-align: center;   
+    white-space: nowrap;  
+    line-height: 12px;  
+    overflow: hidden;  
+    margin: 0 auto; 
+    display: inline;
+ }
+
+ .menuitem:hover .arrow-up{
+    opacity: 1.0;
+
+ }
+
+ .menuitem .arrow-up {
+    width: 0px;
+    height: 0; 
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 3px solid black;
+    opacity: 0.0;
+    margin-left: -43px;
+    margin-right:43px;
+    margin-bottom:-10px;
+
+ }
+
+
+ .menuitem div{
+    display: inline-block;
+    width: 70px;
+    margin: 0 auto;
+ }
+
+ .selected .arrow-up {
+    opacity: 1.0;   
+ }
+
+.menuitem a{
+    color: #2a2a2a;
+}
+
+
+.menu{
+    margin: 10px auto;
+    width: 70%;
+}
+
+
+.nivoSlider {
+    position:relative;
+    background:url("images/loading.gif") no-repeat 50% 50%;
+}
+.nivoSlider img {
+    position:absolute;
+    top:0px;
+    left:0px;
+    display:none;
+}
+.nivoSlider a {
+    border:0;
+    display:block;
+}
+
+.videoWrapper {
+    position: relative;
+    padding-bottom: 60.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+}
+.videoWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.icons{
+    list-style: none;
+    width: 90px;
+    height: 29px;
+    float: right;
+}
+
+.fb{
+    width: 30px;
+    height: 29px;
+    background: url("icons.png");
+    background-position: 0 0;
+    display: inline-block;
+
+}
+
+.tw{
+    width: 30px;
+    height: 29px;
+    background: url("icons.png");
+    background-position: -30px 0;
+    display: inline-block;
+
+}
+
+.tb{
+    width: 30px;
+    height: 29px;
+    background: url("icons.png");
+    background-position: -60px 0;
+}
+
+.nivo-caption p{
+    text-align: left;
+}
+
+.email, .button{
+    font-family: treb, sans-serif;
+    display: inline-block;
+    text-align: center;
+}
+
+
+#mc_embed_signup .button, .clear{
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+}
+
+#mc_embed_signup{
+    background:#fff; 
+    clear:left; 
+    font:14px pala,sans-serif;
+}
+
+.validate{
+    padding: 0px;
+}
+
+.syndicate-player-container{
+    width: 100%;
+}
+
+.bodyboss{
+    width: 100%;
+}
+
+#catcaption{
+    width: 200px;
+    right: 160px;
+}

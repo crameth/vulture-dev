@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<%= render '/refinery/html_tag' %>
+<% site_bar = render('/refinery/site_bar', :head => true) -%>
+<%= render '/refinery/head' %>
+<body>
+	<%= site_bar -%>
+	<%= render '/refinery/ie6check' if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
+	<div id="page_container">
+		<header id="header">
+			<%= render '/refinery/header' -%>
+		</header>
+		<section id="page">
+			
+			<div class="container_24" style="height:100%;">
+				<div class="grid_20 push_2 suffix_2">
+					<p style="margin:0px 10px; font-family:'treb';">Highlights</p>
+					<div class="slider-wrapper theme-light"  style="max-width:800px; margin:0px auto;">
+						<div class="ribbon"></div>
+						<div id="slider" class="nivoSlider">
+							
+							<% links = Refinery::Page.where(layout_template: "posts").order("created_at DESC") %>
+
+							<% j = 0 %>
+							<% links[0..5].each do |post| %>
+							<% i = links[j] %>
+							<% if i.images.first == nil %>
+							<% j+=1 %>
+							<% i = links[j] %>
+							<% end %>
+							<% parent = Refinery::Page.find(i.parent_id) %>	
+									<a href="<%="/"+ parent.slug + "/" + i.slug%>"><img src="<%=i.images.first.thumbnail("800x450#c").url%>" title="<%= "<h1>" + i.title + "</h1>" + raw(i.content_for(:body).split(' ')[0,30].inject{|sum,word| sum + ' ' + word} +"...") + " <br><br>" + (link_to "Read More", ("/"+ parent.slug + "/" + i.slug))    %>"/></a>
+							<% j+=1 %>
+
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<footer>
+			<%= render '/refinery/footer' -%>
+		</footer>
+
+	</div>
+	<%= render '/refinery/javascripts' %>
+	<script type="text/javascript">
+	$(window).load(function() {
+		$('#slider').nivoSlider({
+        effect:'slideInLeft', // Specify sets like: 'fold,fade,sliceDown'
+        animSpeed:500, // Slide transition speed
+        pauseTime:5000, // How long each slide will show
+        startSlide:0, // Set starting Slide (0 index)
+        directionNav:true, // Next & Prev navigation
+        directionNavHide:true, // Only show on hover
+        controlNav:true, // 1,2,3... navigation
+        controlNavThumbs:false, // Use thumbnails for Control Nav
+        controlNavThumbsFromRel:false, // Use image rel for thumbs
+        controlNavThumbsSearch: '.jpg', // Replace this with...
+        controlNavThumbsReplace: '_thumb.jpg', // ...this in thumb Image src
+        keyboardNav:true, // Use left & right arrows
+        pauseOnHover:true, // Stop animation while hovering
+        manualAdvance:false, // Force manual transitions
+        captionOpacity:0.8, // Universal caption opacity
+        prevText: 'Prev', // Prev directionNav text
+        nextText: 'Next' // Next directionNav text
+    });
+	});
+</script>
+
+</body>
+</html>
+
+

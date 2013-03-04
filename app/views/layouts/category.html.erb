@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<%= render '/refinery/html_tag' %>
+<% site_bar = render('/refinery/site_bar', :head => true) -%>
+<%= render '/refinery/head' %>
+<body>
+	<%= site_bar -%>
+	<%= render '/refinery/ie6check' if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
+	<div id="page_container">
+		<header id="header">
+			<%= render '/refinery/header' -%>					
+		</header>
+		<section id="page">
+			<div class="container_24">
+				<div class="grid_16 push_4 suffix_4">
+				<p style="font-size:12px; margin-bottom:8px;"><%=@page.title%></p>
+					
+				</div>
+
+				<% @page.children.each do |boss| %>
+				<% boss.images.each_with_index	 do |image, index| %>	
+				<div class = "grid_16 push_4 suffix_4">
+
+					<a href="<%= url_for boss.url %>"><img src="<%=image.url%>" data-title="Item Title" data-description="<%=raw boss.caption_for_image_index(index) %>"></a>
+					<div class='nivo-caption' id="catcaption" style="bottom:1.5%;">  
+						<h1><%=raw boss.title%></h1>
+						<%=raw boss.content_for(:body).split(' ')[0,10].inject{|sum,word| sum + ' ' + word} +"..."%>
+						<a href="<%= url_for boss.url %>" style="color:white; position:absolute; bottom: 2%; right:5px;"><p>Read More</p></a>
+					</div> 
+				</div>
+				<% break %>	
+				<% end %>
+				<% end %> 
+			</div>
+
+		</section>
+		<footer>
+			<%= render '/refinery/footer' -%>
+		</footer>
+	</div>
+	<%= render '/refinery/javascripts' %>
+</body>
+</html>
+
+

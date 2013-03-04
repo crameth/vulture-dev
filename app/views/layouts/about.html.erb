@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<%= render '/refinery/html_tag' %>
+<% site_bar = render('/refinery/site_bar', :head => true) -%>
+<%= render '/refinery/head' %>
+<body>
+  <%= site_bar -%>
+  <%= render '/refinery/ie6check' if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
+  <div id="page_container">
+    <header id="header">
+      <%= render '/refinery/header' -%>
+    </header>
+    <section id="page">
+      <div class="container_24">
+        <div class="grid_20 push_2 suffix_2">
+          <img src="<%=@page.images.first.thumbnail("800x300#c").url.to_s%>" alt="Vulture" width="100%">
+        </div>
+        <div class="grid_20 push_2 suffix_2">
+          <div style="margin-top:30px;"><%= raw @page.content_for(:body) %></div> 
+        </div>
+
+
+      
+
+    </section>
+  </div>
+  <footer>
+    <%= render '/refinery/footer' -%>
+  </footer>
+</div>
+<%= render '/refinery/javascripts' %>
+<script type="text/javascript">
+$('.ic').css( 'cursor', 'pointer' );
+$(".ic").click(function(){
+ window.location=$(this).find("a").attr("href"); 
+ return false;
+});</script>
+</body>
+</html>
+
+

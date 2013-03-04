@@ -1,0 +1,63 @@
+<head>
+  <!--  
+   _     _   _   _____   _   _   __   _   _   _  
+  | |   / / | | /  ___/ | | | | |  \ | | | | | | 
+  | |  / /  | | | |___  | |_| | |   \| | | | | | 
+  | | / /   | | \___  \ |  _  | | |\   | | | | | 
+  | |/ /    | |  ___| | | | | | | | \  | | |_| | 
+  |___/     |_| /_____/ |_| |_| |_|  \_| \_____/ 
+
+      ___  ___   _____   __   _   _____   __   _  
+     /   |/   | | ____| |  \ | | /  _  \ |  \ | | 
+    / /|   /| | | |__   |   \| | | | | | |   \| | 
+   / / |__/ | | |  __|  | |\   | | | | | | |\   | 
+  / /       | | | |___  | | \  | | |_| | | | \  | 
+ /_/        |_| |_____| |_|  \_| \_____/ |_|  \_| 
+  
+ -->
+  <meta charset='<%= Rails.application.config.encoding %>' />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  <link rel="apple-touch-icon" href="assets/vulture-apple.PNG"/>
+  <link rel="apple-touch-startup-image" href="assets/vulture-apple-start.PNG">
+  <link rel="shortcut icon" href="assets/vulture_favico.ico" type="image/x-icon" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
+  <title><%= browser_title(yield(:title)) %></title>
+  <%= raw %(<meta name="description" content="#{@meta.meta_description}" />) if @meta.meta_description.present? -%>
+  <%= raw %(<meta name="keywords" content="#{@meta.meta_keywords}">) if @meta.meta_keywords.present? -%>
+  <%= raw %(<link rel="canonical" content="#{@canonical}" />) if @canonical.present? -%>
+  <%= csrf_meta_tags if Refinery::Core.authenticity_token_on_frontend -%>
+  <%= yield :meta %>
+
+  <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">  
+  <%= stylesheet_link_tag "application", "formatting", "theme", "themes/light/light.css" %>
+  <%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=GFS+Didot" %>
+  <%= stylesheet_link_tag "home" if home_page? %>
+  <%= yield :stylesheets %>
+  <%= javascript_include_tag :application %>
+  <%= render '/refinery/google_analytics' %>
+
+  <%= javascript_include_tag 'modernizr-min' %>
+  
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-33400275-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+  
+  <meta property="og:title" content="<%=@page.title%>" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="http://www.vulture-magazine.com<%= url_for @page.url %>" />
+  <meta property="og:image" content="http://www.vulture-magazine.com<%=@page.images.first.thumbnail("400x225#c").url%>" />
+  <meta property="og:site_name" content="VULTURE-Magazine" />
+  <meta property="fb:admins" content="709578340" />
+</head>

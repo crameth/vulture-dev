@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<%= render '/refinery/html_tag' %>
+<% site_bar = render('/refinery/site_bar', :head => true) -%>
+<%= render '/refinery/head' %>
+<body>
+	<%= site_bar -%>
+	<%= render '/refinery/ie6check' if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
+	<div id="page_container">
+		<header id="header">
+			<%= render '/refinery/header' -%>
+		</header>
+		<section id="page">
+			<div class="container_24">
+				<div class="grid_18 push_3 suffix_3">
+				<div data-configid="5110704/1628823" style="width: 710px; height: 438px;" class="issuuembed"></div><script type="text/javascript" src="//e.issuu.com/embed.js" async="true"></script>
+				<h3 style="text-align:right; margin-bottom:0px;">Issue 04</h3>
+					<a target="_blank"  href="http://vulturemagazine.bigcartel.com/" title="http://vulturemagazine.bigcartel.com/"><p style="text-align:right; color:#ccc;">Buy Now</p></a>
+			</div>
+			<div class="container_24">
+				<div class="grid_18 push_3 suffix_3">
+			
+					<div><object style="width:710px;height:438px" ><param name="movie" value="http://static.issuu.com/webembed/viewers/style1/v2/IssuuReader.swf?mode=mini&amp;embedBackground=%23e9e9e9&amp;backgroundColor=%23222222&amp;documentId=130103024335-11cca0a795a744ba8a461f14ce62c145" /><param name="allowfullscreen" value="true"/><param name="menu" value="false"/><param name="wmode" value="transparent"/><embed src="http://static.issuu.com/webembed/viewers/style1/v2/IssuuReader.swf" type="application/x-shockwave-flash" allowfullscreen="true" menu="false" wmode="transparent" style="width:710px;height:438px" flashvars="mode=mini&amp;backgroundColor=%23222222&amp;documentId=130103024335-11cca0a795a744ba8a461f14ce62c145" /></object></div>
+					<h3 style="text-align:right; margin-bottom:0px;">Issue 03</h3>
+						<a target="_blank"  href="http://vulturemagazine.bigcartel.com/" title="http://vulturemagazine.bigcartel.com/"><p style="text-align:right; color:#ccc;">Buy Now</p></a>
+				</div>
+
+				<div class="grid_18 push_3 suffix_3">
+
+
+					<div><object style="width:710px;height:438px" ><param name="movie" value="http://static.issuu.com/webembed/viewers/style1/v2/IssuuReader.swf?mode=mini&amp;embedBackground=%23e9e9e9&amp;backgroundColor=%23222222&amp;documentId=121108173314-4a498e154db5475c82bc4ca563abe63d" /><param name="allowfullscreen" value="true"/><param name="menu" value="false"/><param name="wmode" value="transparent"/><embed src="http://static.issuu.com/webembed/viewers/style1/v2/IssuuReader.swf" type="application/x-shockwave-flash" allowfullscreen="true" menu="false" wmode="transparent" style="width:710px;height:438px" flashvars="mode=mini&amp;embedBackground=%23e9e9e9&amp;backgroundColor=%23222222&amp;documentId=121108173314-4a498e154db5475c82bc4ca563abe63d" /></object></div>
+					<h3 style="text-align:right; margin-bottom:0px;">Issue 02</h3>
+						<a target="_blank"  href="http://vulturemagazine.bigcartel.com/" title="http://vulturemagazine.bigcartel.com/"><p style="text-align:right; color:#ccc;">Buy Now</p></a>
+				</div>
+
+
+				<div class="grid_18 push_3 suffix_3">
+
+
+					<div><object style="width:710px;height:438px" ><param name="movie" value="http://static.issuu.com/webembed/viewers/style1/v2/IssuuReader.swf?mode=mini&amp;embedBackground=%23e9e9e9&amp;backgroundColor=%23222222&amp;documentId=120907112246-561908f16bdb4bc3a701ec3d16c26c49" /><param name="allowfullscreen" value="true"/><param name="menu" value="false"/><param name="wmode" value="transparent"/><embed src="http://static.issuu.com/webembed/viewers/style1/v2/IssuuReader.swf" type="application/x-shockwave-flash" allowfullscreen="true" menu="false" wmode="transparent" style="width:710px;height:438px" flashvars="mode=mini&amp;embedBackground=%23e9e9e9&amp;backgroundColor=%23222222&amp;documentId=120907112246-561908f16bdb4bc3a701ec3d16c26c49" /></object></div>
+					
+					<h3 style="text-align:right; margin-bottom:0px;">Issue 01</h3>
+				</div>
+
+				<div class="grid_18 push_3 suffix_3">
+
+					<div><object style="width:710px;height:438px" ><param name="movie" value="http://static.issuu.com/webembed/viewers/style1/v2/IssuuReader.swf?mode=mini&amp;embedBackground=%23e9e9e9&amp;backgroundColor=%23222222&amp;documentId=120627040149-a5131cbed11b4a0ca7d547c4dedf75c0" /><param name="allowfullscreen" value="true"/><param name="menu" value="false"/><param name="wmode" value="transparent"/><embed src="http://static.issuu.com/webembed/viewers/style1/v2/IssuuReader.swf" type="application/x-shockwave-flash" allowfullscreen="true" menu="false" wmode="transparent" style="width:710px;height:438px" flashvars="mode=mini&amp;embedBackground=%23e9e9e9&amp;backgroundColor=%23222222&amp;documentId=120627040149-a5131cbed11b4a0ca7d547c4dedf75c0" /></object></div>
+
+					<h3 style="text-align:right; margin-bottom:0px;">Issue 00</h3>
+				</div>
+				
+
+				<div class="two columns" style="width:5%;"></div>
+				
+			</div>
+		</section>
+		<footer>
+			<%= render '/refinery/footer' -%>
+		</footer>
+	</div>
+	<%= render '/refinery/javascripts' %>
+</body>
+</html>
+
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<%= render '/refinery/html_tag' %>
+<% site_bar = render('/refinery/site_bar', :head => true) -%>
+<%= render '/refinery/head' %>
+<body>
+	<%= site_bar -%>
+	<%= render '/refinery/ie6check' if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
+	<div id="page_container">
+		<header id="header">
+			<%= render '/refinery/header' -%>
+		</header>
+		<section id="page">
+			<div class="container_24">
+				<div class="clear grid_2"></div>
+				<% i = 0 %>
+					<% @page.images.each_with_index do |image, index| %>					
+					<div class = "grid_4" style="position:relative;">
+						<a href="/<%=raw @page.caption_for_image_index(index).downcase.gsub!(/(<[^>]*>)|\n|\t/s) {""}%>" style="position:relative;"><img src="<%=image.thumbnail("150x324#c").url%>" data-title="Item <%=i += 1%> Title" data-description="<%=raw @page.caption_for_image_index(index) %>"></a>
+						<div class='description'>  
+						        	<p class="mus"><a href="/<%=raw @page.caption_for_image_index(index).gsub!(/(<[^>]*>)|\n|\t/s) {""}.downcase%>"><%=raw @page.caption_for_image_index(index)%></a></p>
+						</div>
+					</div>
+					<% end %> 
+			</div>
+		</section>
+	</div>
+	<%= render '/refinery/javascripts' %>
+</body>
+
+<script type="text/javascript">
+	$(document).delegate("div.description", "click", function() {
+	   window.location = $(this).find("a").attr("href");
+	});
+	$(document).ready(function(){
+		$("body").css("opacity", "1");
+	});
+</script>
+
+
+
+</html>
+
+
+
+

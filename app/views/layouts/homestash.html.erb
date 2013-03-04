@@ -1,0 +1,37 @@
+<% links = ["/fashion/steel-blue-by-skye-tan","/shopping/agyness-deyn-x-dr-martens-collaboration","/film/morphe-a-short-film-by-aesop-x-lucy-mcrae","/shopping/damir-doma-fraai-ankle-boots","/fashion/positive-dimension-by-hadriel-gonzalez","/art/sound-sculpture-by-zimoun"] %>
+
+<div id="slider" class="nivoSlider">
+	
+	<% links = Refinery::Page.where(layout_template: "posts").order("created_at DESC") %>
+	<% flinks = Array.new  %>
+	<% i = 0 %>
+	<% links.each do|link, index|%>
+		<% if Refinery::ImagePage.where(page_id: link.id) != nil %>
+			<% flinks[i] = link %>
+			<% i += 1 %>
+		<% end %>
+	<% end %>
+
+
+	<% flinks[0..5].each do |post| %>				
+			<a href="<%="/"+ Refinery::Page.find(post.parent_id).slug + "/" + post.slug%>"><img src="<%=post.images.first.thumbnail("800x450#c").url%>" title="<%= "<h1>" + post.title + "</h1>" + raw(post.content_for(:body).split(' ')[0,30].inject{|sum,word| sum + ' ' + word} +"...") + " <br><br>" + (link_to "Read More", ("/"+ Refinery::Page.find(post.parent_id).slug + "/" + post.slug))    %>"/></a>
+	<% end %>
+</div>
+
+<div id="slider" class="nivoSlider">
+	
+	<% links = Refinery::ImagePage.order("id DESC").limit(6) %>
+	<% flinks = [1,1,1,1,1,1]  %>
+	<% i = 0 %>
+	<% links.each do|link, index|%>
+		<% if Refinery::ImagePage.where(page_id: link.id) != nil %>
+			<% flinks[i] = link %>
+			<% i += 1 %>
+		<% end %>
+	<% end %>
+
+
+	<% links.each do |post| %>				
+			<a href="<%="/"+ Refinery::Page.find((Refinery::Page.find(post.page_id)).parent_id).slug + "/" + Refinery::Page.find(post.page_id).slug%>"><img src="<%=Refinery::Page.find(post.page_id).images.first.thumbnail("800x450#c").url%>" title="<%= "<h1>" + Refinery::Page.find(post.page_id).title + "</h1>" + raw(Refinery::Page.find(post.page_id).content_for(:body).split(' ')[0,30].inject{|sum,word| sum + ' ' + word} +"...") + " <br><br>" + (link_to "Read More", ("/"+ Refinery::Page.find(Refinery::Page.find(post.page_id)).parent_id).slug + "/" + Refinery::Page.find(post.page_id).slug))    %>"/></a>
+	<% end %>
+</div>
